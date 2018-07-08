@@ -17,6 +17,19 @@ var Counter = React.createClass({
       });
   },
 
+  componentWillMount: function() {
+    console.log("zmiana stanu")
+  },
+
+  shouldComponentUpdate(nextProps,nestState): function() {
+    console.log("czy jest potrzebny render?");
+    if(this.state.counter !== nextState.counter) {
+      return true;
+    } else {
+      return false;
+    }
+  },
+
     render: function() {
 
       return React.createElement('div',{},
@@ -24,10 +37,40 @@ var Counter = React.createClass({
              React.createElement('button', {onClick: this.increment}, "Dodawanie"),
              React.createElement('button', {onClick: this.decrement}, "Odejmowanie"),
            )
-    }
-});
+    },
 
-var element = React.createElement(Counter);
-var element2 = React.createElement(Counter);
-var element3 = React.createElement(Counter);
-ReactDOM.render(element, document.getElementById('app'));
+    getDefaultProps: function() {
+      console.log("props został ustawiony domyślnie")
+    },
+
+
+    componentWillReceiveProps(nextProps): function() {
+      console.log("otrzymano nowe właściwości")
+    },
+
+    componentWillUpdate(nextProps,nestState): function() {
+      console.log("render")
+    },
+
+    componentDidUpdate: function() {
+      console.log("pobieranie danych")
+    },
+
+
+var elements = React.createElement('div', {},
+               React.createElement(Counter),
+               React.createElement(Counter),
+               React.createElement(Counter)
+);
+
+ReactDOM.render(elements, document.getElementById('app'));
+
+componentDidMount: function() {
+  console.log("pobieranie danych")
+},
+
+componentWillUnmount: function() {
+  console.log("usuwamy funkcję decrement")
+},
+
+});
