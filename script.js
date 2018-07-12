@@ -57,20 +57,20 @@ var Counter = React.createClass({
     },
 
 
-var elements = React.createElement('div', {},
-               React.createElement(Counter),
-               React.createElement(Counter),
-               React.createElement(Counter)
-);
+    componentDidMount: function() {
+      console.log("pobieranie danych")
+    },
 
-ReactDOM.render(elements, document.getElementById('app'));
+    componentWillUnmount: function() {
+      console.log("usuwamy funkcję decrement")
+    },
 
-componentDidMount: function() {
-  console.log("pobieranie danych")
-},
+    });
 
-componentWillUnmount: function() {
-  console.log("usuwamy funkcję decrement")
-},
+  var elements = React.createElement('div', {},
+                 React.createElement(Counter),
+                 React.createElement(Counter),
+                 React.createElement(Counter)
+  );
 
-});
+  ReactDOM.render(elements, document.getElementById('app'));
