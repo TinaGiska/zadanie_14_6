@@ -21,7 +21,7 @@ var Counter = React.createClass({
     console.log("zmiana stanu")
   },
 
-  shouldComponentUpdate(nextProps,nestState): function() {
+  shouldComponentUpdate: function(nextProps,nestState) {
     console.log("czy jest potrzebny render?");
     if(this.state.counter !== nextState.counter) {
       return true;
@@ -44,11 +44,11 @@ var Counter = React.createClass({
     },
 
 
-    componentWillReceiveProps(nextProps): function() {
+    componentWillReceiveProps: function(nextProps) {
       console.log("otrzymano nowe właściwości")
     },
 
-    componentWillUpdate(nextProps,nestState): function() {
+    componentWillUpdate: function(nextProps,nestState) {
       console.log("render")
     },
 
